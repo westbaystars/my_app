@@ -1,7 +1,7 @@
 <section class="hero is-primary">
   <div class="hero-body">
     <p class="title">
-      <%= gettext "Welcome to %{name}!", name: "Phoenix" %>
+      {gettext "Welcome to %{name}!", name: "Phoenix"}
     </p>
     <p class="subtitle">
       Peace of mind from prototype to production

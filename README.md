@@ -3,6 +3,13 @@
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
+  * Add the file `config/dev.secrets.exs` with the content:
+```elixir
+import Config
+
+config :my_app,
+  api_key: "your-fontawesome-key"
+```
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.

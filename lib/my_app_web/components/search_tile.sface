@@ -1,0 +1,31 @@
+<article class="tile is-child notification is-#{@color}">
+  <Form for={:search} opts={[phx_change: :search, phx_target: @myself]}>
+    <p class="title">Player Search</p>
+    <TextInput
+      name={:name}
+      value={@name}
+      expanded={true}
+      opts={[phx_debounce: 500, autocomplete: "off"]}
+      placeholder="Player name"
+      help_text="Start with ^ to start-with, and end with $ to end-with"
+      id="name-search"
+    >
+      <:right_addon>
+        <Submit color="link"><FA icon="magnifying-glass" />&#160;Search</Submit>
+      </:right_addon>
+    </TextInput>
+    {#if @search_results != []}
+      <div class="relative">
+        <div class="absolute z-50 left-0 right-0 rounded border border-gray-100 shadow py-2 bg-white">
+          {#for search_result <- @search_results}
+            <Submit
+              class="mb-1 cursor-pointer p-2 hover:bg-gray-200 focus:bg-gray-200"
+              phx-click="pick"
+              phx-value-name={:search_result}
+            >{search_result}</Submit>
+          {/for}
+        </div>
+      </div>
+    {/if}
+  </Form>
+</article>

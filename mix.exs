@@ -50,6 +50,7 @@ defmodule MyApp.MixProject do
       {:surface_formatter, "~> 0.7.5", only: :dev},
       {:dart_sass, "~> 0.5.0", only: :dev},
       {:bulma, "0.9.3"},
+      {:surface_font_awesome, "~> 0.2.4"},
       {:plug_cowboy, "~> 2.5"},
       {:surface_catalogue, "~> 0.4.0"}
     ]

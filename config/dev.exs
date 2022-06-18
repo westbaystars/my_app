@@ -77,3 +77,5 @@ config :dart_sass,
     args: ~w(--load-path=../deps/bulma css:../priv/static/assets),
     cd: Path.expand("../assets", __DIR__)
   ]
+
+import_config "dev.secrets.exs"
