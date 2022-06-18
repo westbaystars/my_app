@@ -48,6 +48,8 @@ defmodule MyApp.MixProject do
       {:jason, "~> 1.2"},
       {:surface, "~> 0.7.4"},
       {:surface_formatter, "~> 0.7.5", only: :dev},
+      {:dart_sass, "~> 0.5.0", only: :dev},
+      {:bulma, "0.9.3"},
       {:plug_cowboy, "~> 2.5"},
       {:surface_catalogue, "~> 0.4.0"}
     ]
@@ -62,7 +64,11 @@ defmodule MyApp.MixProject do
   defp aliases do
     [
       setup: ["deps.get"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": [
+        "esbuild default --minify",
+        "phx.digest",
+        "sass default --no-source-map --style=compressed"
+      ]
     ]
   end
 
