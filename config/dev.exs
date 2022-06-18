@@ -16,7 +16,8 @@ config :my_app, MyAppWeb.Endpoint,
   secret_key_base: "vLqiTxF8TwMRY2G9eDmmpB7VKfFX2hX5CfW5u7mXktBnJSGbut3ZmgPykwmpz2kc",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    esbuild: {Esbuild, :install_and_run, [:catalogue, ~w(--sourcemap=inline --watch)]}
   ]
 
 # ## SSL Support
@@ -45,12 +46,14 @@ config :my_app, MyAppWeb.Endpoint,
 
 # Watch static and templates for browser reloading.
 config :my_app, MyAppWeb.Endpoint,
+  reloadable_compilers: [:gettext, :elixir, :surface],
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/my_app_web/(live|views)/.*(ex)$",
-      ~r"lib/my_app_web/templates/.*(eex)$"
+      ~r"lib/my_app_web/(live|views|components)/.*(ex|sface|js)$",
+      ~r"lib/my_app_web/templates/.*(eex)$",
+      ~r"priv/catalogue/.*(ex)$"
     ]
   ]
 

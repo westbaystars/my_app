@@ -32,3 +32,8 @@ my_app-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Ignore elixir_ls working directory
+.elixir_ls
+
+# Ignore generated js hook files for components
+assets/js/_hooks/
