@@ -101,17 +101,24 @@ defmodule MyAppWeb.Components.Form.TextInput do
         "is-expanded": @expanded,
         "is-loading": @loading
       }>
-        <input name={@name} class={"input", @class} type="text" placeholder={@placeholder} value={@value} {...@opts}>
+        <input
+          name={@name}
+          class={"input", @class}
+          type="text"
+          placeholder={@placeholder}
+          value={@value}
+          {...@opts}
+        />
         {#if @icon_left}
-        <span class="icon is-small is-left">
-          <i class={"fas", "fa-" <> @icon_left}></i>
-        </span>
+          <span class="icon is-small is-left">
+            <i class={"fas", "fa-" <> @icon_left} />
+          </span>
         {/if}
         {#if @icon_right}
-        <span class="icon is-small is-right"><i class={"fas", "fa-" <> @icon_right}></i></span>
+          <span class="icon is-small is-right"><i class={"fas", "fa-" <> @icon_right} /></span>
         {/if}
         {#if @help_text}
-        <p class="help is-success">{@help_text}</p>
+          <p class="help is-success">{@help_text}</p>
         {/if}
       </div>
       <#slot name="left_addon" />
