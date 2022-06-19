@@ -16,7 +16,7 @@ defmodule MyAppWeb.Components.Button do
   def render(assigns) do
     ~F"""
     <button class={"button", "is-#{@color}", @class}>
-      <#slot />
+      <#slot/>
     </button>
     """
   end
