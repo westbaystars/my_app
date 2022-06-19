@@ -13,7 +13,7 @@ defmodule MyAppWeb.Components.Tiles.Search do
   alias SurfaceFontAwesome.Icon, as: FA
 
   @doc "The ID of the search input field."
-  # prop id, :string, default: "search"
+  #prop id, :string, default: "search"
 
   @doc "The value to search for."
   prop value, :string, default: ""
@@ -31,18 +31,19 @@ defmodule MyAppWeb.Components.Tiles.Search do
   data loading, :boolean, default: false
 
   def handle_event("search", %{"value" => search_phrase}, socket) do
-    IO.inspect("Search for: #{search_phrase}")
-    :timer.sleep(5000)
+    send(self(), {:search, search_phrase})
+    IO.inspect("Sent search to self.")
 
     assigns = [
-      search_results: search_for_state(search_phrase),
-      search_phrase: search_phrase
+      search_results: ["Searching..."],
+      search_phrase: search_phrase,
+      loading: true
     ]
 
     {:noreply, assign(socket, assigns)}
   end
 
-  def handle_event("pick", %{"name" => search_phrase}, socket) do
+  def handle_event("pick", %{"value" => search_phrase}, socket) do
     assigns = [
       search_results: [],
       search_phrase: search_phrase

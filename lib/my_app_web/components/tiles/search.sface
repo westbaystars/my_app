@@ -8,6 +8,7 @@
       opts={[phx_debounce: 500, autocomplete: "off"]}
       placeholder="Player name"
       help_text="Start with ^ to start-with, and end with $ to end-with"
+      loading={@loading}
       id={@id}
     >
       <:right_addon>
