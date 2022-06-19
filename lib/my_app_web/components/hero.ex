@@ -13,13 +13,22 @@ defmodule MyAppWeb.Components.Hero do
   prop subtitle, :string
 
   @doc "The color"
-  prop color, :string, values!: ["danger", "info", "warning"]
+  prop color, :string, values!: ["danger", "info", "warning", "primary"], default: "info"
+
+  @doc "Additional classes set by parent."
+  prop class, :string
 
   def render(assigns) do
     ~F"""
-    <section class={"phx-hero", "alert-#{@color}": @color}>
-      <h1>{gettext("Hi, %{name}!", name: @name)}</h1>
-      <p>{@subtitle}</p>
+    <section class={"hero", "is-#{@color}", @class}>
+      <div class="hero-body">
+        <p class="title">
+          {gettext("Hi, %{name}!", name: @name)}
+        </p>
+        <p class="subtitle">
+          {@subtitle}
+        </p>
+      </div>
     </section>
     """
   end

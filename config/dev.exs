@@ -55,7 +55,7 @@ config :my_app, MyAppWeb.Endpoint,
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/my_app_web/(live|views|components)/.*(ex|sface|js)$",
-      ~r"lib/my_app_web/templates/.*(eex)$",
+      ~r"lib/my_app_web/templates/.*(eex|sface)$",
       ~r"priv/catalogue/.*(ex)$"
     ]
   ]
