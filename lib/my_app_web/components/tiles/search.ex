@@ -53,9 +53,14 @@ defmodule MyAppWeb.Components.Tiles.Search do
   end
 
   def handle_event("search", %{"value" => value}, socket) do
-    send_update(__MODULE__, id: "search", value: value, loading: false)
+    loading = if value == "" do
+      false
+    else
+      send_update(__MODULE__, id: "search", value: value, loading: false)
+      true
+    end
 
-    {:noreply, assign(socket, loading: true)}
+    {:noreply, assign(socket, loading: loading)}
   end
 
   def handle_event("pick", %{"value" => value}, socket) do
