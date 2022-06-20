@@ -94,13 +94,16 @@ defmodule MyAppWeb.Components.Form.TextInput do
     ~F"""
     <div class={"field", "has-addons": @left_addon || @right_addon}>
       <label :if={@label} class="label">{@label}</label>
-      <div id={@id} class={
-        "control",
-        "has-icons-left": @icon_left,
-        "has-icons-right": @icon_right,
-        "is-expanded": @expanded,
-        "is-loading": @loading
-      }>
+      <div
+        id={@id}
+        class={
+          "control",
+          "has-icons-left": @icon_left,
+          "has-icons-right": @icon_right,
+          "is-expanded": @expanded,
+          "is-loading": @loading
+        }
+      >
         <input
           name={@name}
           class={"input", @class}

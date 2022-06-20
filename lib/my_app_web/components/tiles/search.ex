@@ -13,7 +13,7 @@ defmodule MyAppWeb.Components.Tiles.Search do
   alias SurfaceFontAwesome.Icon, as: FA
 
   @doc "The ID of the search input field."
-  #prop id, :string, default: "search"
+  # prop id, :string, default: "search"
 
   @doc "The value to search for."
   prop value, :string, default: ""
