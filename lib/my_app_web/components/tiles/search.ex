@@ -30,23 +30,38 @@ defmodule MyAppWeb.Components.Tiles.Search do
 
   data loading, :boolean, default: false
 
-  def handle_event("search", %{"value" => search_phrase}, socket) do
-    send(self(), {:search, search_phrase})
-    IO.inspect("Sent search to self.")
+  # Handle autocomplete searching when a value is specified.
+  def update(%{value: value} = assigns, socket) when byte_size(value) > 0 do
+    # IO.inspect("Search for: #{value}")
+    :timer.sleep(3000)    # Time delay to see it working
 
-    assigns = [
-      search_results: ["Searching..."],
-      search_phrase: search_phrase,
-      loading: true
-    ]
+    socket =
+      socket
+      |> assign(
+        search_results: search_for_state(value),
+        loading: false
+      )
 
-    {:noreply, assign(socket, assigns)}
+    # IO.inspect(socket.assigns)
+    {:ok, assign(socket, assigns)}
   end
 
-  def handle_event("pick", %{"value" => search_phrase}, socket) do
+  # Pass through all assigns without doing anything.
+  def update(assigns, socket) do
+    # IO.inspect("Update assigns: #{inspect(assigns)}")
+    {:ok, assign(socket, assigns)}
+  end
+
+  def handle_event("search", %{"value" => value}, socket) do
+    send_update(__MODULE__, id: "search", value: value, loading: false)
+
+    {:noreply, assign(socket, loading: true)}
+  end
+
+  def handle_event("pick", %{"value" => value}, socket) do
     assigns = [
       search_results: [],
-      search_phrase: search_phrase
+      value: value
     ]
 
     {:noreply, assign(socket, assigns)}
